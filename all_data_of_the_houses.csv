@@ -1,9 +1,11 @@
-,Locality,Type of property,Subtype of property,Price,Type of sale,Number of rooms,Area,Kitchen,Furnished,Open fire,Terrace,Garden,Surface of the land,Surface area of the plot of land,Number of facades,Swimming pool,State of the building
-0,Woluwe-St-Pierre,House,HOUSE,"€990,000",,6,,0,,,,,251.0,,,0,
-1,Trooz,House,HOUSE,"€195,000",,3,,0,,,,,475.0,,,0,
-2,Woluwe-Saint-Lambert,House,HOUSE,"€500,000",,6,,0,,,,,95.0,,,0,
-3,Woluwe-Saint-Lambert,House,HOUSE,"€500,000",,6,,0,,,,,95.0,,,0,
-4,Uccle,Apartment,APARTMENT,"€380,000",,2,,0,,,,,,,,0,
-5,Uccle,Apartment,APARTMENT,"€295,000",,1,,0,,,,,,,,0,
-6,Ixelles,Apartment,APARTMENT,"€630,000",,3,,0,,,,,,,,0,
-7,Ixelles,Apartment,PENTHOUSE,"€1,500,000",,3,,0,,,,,,,,0,
+,Locality,Type of property,Subtype of property,Price,Type of sale,Number of rooms,Living surface area,Kitchen,Furnished,Open fire,Terrace,Garden,Surface of the land,Number of facades,Swimming pool,State of the building
+0,1150,HOUSE,HOUSE,990000.0,,6.0,485.0,0.0,0,0,16,0.0,251,2.0,0,AS_NEW
+1,4180,HOUSE,HOUSE,195000.0,,3.0,242.0,0.0,0,0,36,100.0,475,3.0,0,GOOD
+2,7500,HOUSE_GROUP,HOUSE_GROUP,,,,,,0,0,0,0.0,0,,0,
+3,4180,HOUSE,MIXED_USE_BUILDING,295000.0,,3.0,242.0,0.0,0,0,36,1000.0,1403,3.0,0,GOOD
+4,4570,HOUSE,HOUSE,549000.0,,5.0,365.0,0.0,0,0,15,1850.0,25157,4.0,0,GOOD
+5,1400,HOUSE,MANSION,600000.0,,4.0,330.0,0.0,0,1,45,185.0,390,3.0,0,GOOD
+6,8000,HOUSE,EXCEPTIONAL_PROPERTY,625000.0,,2.0,184.0,0.0,0,0,0,50.0,134,2.0,0,AS_NEW
+7,8730,HOUSE,VILLA,675000.0,,4.0,349.0,0.0,0,0,0,977.0,1526,4.0,0,AS_NEW
+8,1410,HOUSE,VILLA,750000.0,,5.0,270.0,0.0,0,1,31,450.0,1059,4.0,0,GOOD
+9,1050,HOUSE,MANSION,3800000.0,,5.0,752.0,0.0,0,0,40,,340,2.0,0,JUST_RENOVATED
