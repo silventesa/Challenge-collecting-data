@@ -10,7 +10,7 @@ This project was carried out in Sept 2020 in the context of the course Bouman 2.
 
 ### Who's there?
 
-Three learners and collaborators, [Emre Ozan](https://github.com/mremreozan), [Jocahim Kotek](https://github.com/jotwo) and [Sara Silvente](https://github.com/silventesa), designed the program.
+Three learners and collaborators, [Emre Ozan](https://github.com/mremreozan), [Joachim Kotek](https://github.com/jotwo) and [Sara Silvente](https://github.com/silventesa), designed the program.
 
 
 ## Let's go through it!
