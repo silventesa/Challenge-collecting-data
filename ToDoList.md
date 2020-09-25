@@ -10,4 +10,5 @@
   - [ ] merge codes
  
  - [ ] Write a README file
- - [ ] Cahnge the name of the repository (it should be called "challenge-collecting-data")
+ - [ ] Change the name of the repository (it should be called "challenge-collecting-data")
+ - [ ] Clean the repo (e.g., delete prop_house) 
