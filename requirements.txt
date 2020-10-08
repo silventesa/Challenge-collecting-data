@@ -1,0 +1,11 @@
+
+requirements = """
+webdriver>=3.14.1
+pandas<=0.22.0
+request>=2.24.0
+parsel>=1.6.0
+bs4>=4.9.3
+re>=2.2.1
+json>=2.0.9
+pycodestyle
+"""
