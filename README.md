@@ -114,4 +114,4 @@ house_dict = {
 <br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        &nbsp; &nbsp; &nbsp;           "isFurnished": <class 'bool'>
 <br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        }
 <br />&nbsp;&nbsp;&nbsp;        }
-}
+<br />}
