@@ -78,7 +78,7 @@ Finally, we store our results in a csv file by using **pandas dataframe**, which
 ### Features Dict Layout
 
 house_dict = {
-/n    "flags":{
+<br />    "flags":{
         "isPublicSale": <class 'bool'>,
         "isNotarySale": <class 'bool'>,
         "isAnInteractiveSale": <class 'bool'>
