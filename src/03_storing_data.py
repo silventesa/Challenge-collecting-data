@@ -10,7 +10,7 @@ import pandas as pd
 # 3) store all data of properties into a defaultdict
 houses_apartments_dict = defaultdict(list)
 
-with open('csv_files/houses_apartments_urls.csv', 'r') as file:
+with open('../csv_files/houses_apartments_urls.csv', 'r') as file:
     url = file.readline()
     while url != "":
         
@@ -37,4 +37,4 @@ with open('csv_files/houses_apartments_urls.csv', 'r') as file:
 
 # 3) We store all data to a csv file with dataframe.
 df = pd.DataFrame(houses_apartments_dict)
-df.to_csv('csv_files/all_data_of_the_houses.csv')
+df.to_csv('../csv_files/all_data_of_the_houses.csv')

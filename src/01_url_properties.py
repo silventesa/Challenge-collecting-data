@@ -10,7 +10,7 @@ from parsel import Selector
 
 # 1) Obtain 10000 url of houses with webdriver (appartments below)
 
-driver = webdriver.Chrome(executable_path='web_drivers/chromedriver.exe')
+driver = webdriver.Chrome(executable_path='../web_drivers/chromedriver.exe')
 
 # The url of each house that resulted from the search will be stored in the "houses_url" list.
 houses_url = []
@@ -44,7 +44,7 @@ for i in range(1, 334):
     houses_url.append(page_houses_url)
 
 # Store all houses urls in a csv file
-with open('csv_files/houses_apartments_urls.csv', 'w') as file:
+with open('../csv_files/houses_apartments_urls.csv', 'w') as file:
     for page_url in houses_url:
         for url in page_url:
             file.write(url+'\n')
@@ -82,7 +82,7 @@ for i in range(1, 334):
     apartments_url.append(page_apartments_url)
 
 # As with houses, store all appartments urls in the same csv file
-with open('csv_files/houses_apartments_urls.csv', 'a') as file:
+with open('../csv_files/houses_apartments_urls.csv', 'a') as file:
     for page_url in apartments_url:
         for url in page_url:
             file.write(url+'\n')
