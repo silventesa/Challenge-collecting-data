@@ -74,3 +74,44 @@ Finally, we store our results in a csv file by using **pandas dataframe**, which
 
 ![FINAL_CSV_PANDAS](/screenshots/store_csv_pandas.png)
 
+
+### Features Dict Layout
+
+house_dict = {
+    "flags":{
+        "isPublicSale": <class 'bool'>,
+        "isNotarySale": <class 'bool'>,
+        "isAnInteractiveSale": <class 'bool'>
+    },
+    "property": {
+        "location": {
+            "postalCode": <class 'str'>,
+        },
+        "building": {
+            "condition": <class 'str'>,
+            "facadeCount": <class 'int'>
+        },
+        "land": {
+            "surface": <class 'int'>
+        },
+        "kitchen": {
+            "type": <class 'str'>
+        },
+        "type": <class 'str'>,
+        "subtype": <class 'str'>,
+        "netHabitableSurface": <class 'int'>,
+        "bedroomCount": <class 'int'>,
+        "hasGarden": <class 'bool'>,
+        "gardenSurface": <class 'int'>,
+        "hasTerrace": <class 'bool'>,
+        "terraceSurface": <class 'int'>,
+        "fireplaceExists": <class 'bool'>,
+        "hasSwimmingPool": <class 'bool'>
+    },
+    "transaction": {
+        "sale": { 
+            "price": <class 'int'>,
+            "isFurnished": <class 'bool'>
+        }
+    }
+}
