@@ -78,40 +78,40 @@ Finally, we store our results in a csv file by using **pandas dataframe**, which
 ### Features Dict Layout
 
 house_dict = {
-    "flags":{
-        "isPublicSale": <class 'bool'>,
-        "isNotarySale": <class 'bool'>,
-        "isAnInteractiveSale": <class 'bool'>
-    },
-    "property": {
-        "location": {
-            "postalCode": <class 'str'>,
-        },
-        "building": {
-            "condition": <class 'str'>,
-            "facadeCount": <class 'int'>
-        },
-        "land": {
-            "surface": <class 'int'>
-        },
-        "kitchen": {
-            "type": <class 'str'>
-        },
-        "type": <class 'str'>,
-        "subtype": <class 'str'>,
-        "netHabitableSurface": <class 'int'>,
-        "bedroomCount": <class 'int'>,
-        "hasGarden": <class 'bool'>,
-        "gardenSurface": <class 'int'>,
-        "hasTerrace": <class 'bool'>,
-        "terraceSurface": <class 'int'>,
-        "fireplaceExists": <class 'bool'>,
-        "hasSwimmingPool": <class 'bool'>
-    },
-    "transaction": {
-        "sale": { 
-            "price": <class 'int'>,
-            "isFurnished": <class 'bool'>
-        }
-    }
-}
+<br />&nbsp;&nbsp;&nbsp;        "flags":{
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "isPublicSale": <class 'bool'>,
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "isNotarySale": <class 'bool'>,
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "isAnInteractiveSale": <class 'bool'>
+<br />&nbsp;&nbsp;&nbsp;        },
+<br />&nbsp;&nbsp;&nbsp;        "property": {
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "location": {
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        &nbsp; &nbsp; &nbsp;           "postalCode": <class 'str'>,
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        },
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "building": {
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        &nbsp; &nbsp; &nbsp;           "condition": <class 'str'>,
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        &nbsp; &nbsp; &nbsp;           "facadeCount": <class 'int'>
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        },
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "land": {
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        &nbsp; &nbsp; &nbsp;           "surface": <class 'int'>
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        },
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "kitchen": {
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        &nbsp; &nbsp; &nbsp;           "type": <class 'str'>
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        },
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "type": <class 'str'>,
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "subtype": <class 'str'>,
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "netHabitableSurface": <class 'int'>,
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "bedroomCount": <class 'int'>,
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "hasGarden": <class 'bool'>,
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "gardenSurface": <class 'int'>,
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "hasTerrace": <class 'bool'>,
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "terraceSurface": <class 'int'>,
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "fireplaceExists": <class 'bool'>,
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "hasSwimmingPool": <class 'bool'>
+<br />&nbsp;&nbsp;&nbsp;        },
+<br />&nbsp;&nbsp;&nbsp;        "transaction": {
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "sale": { 
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        &nbsp; &nbsp; &nbsp;           "price": <class 'int'>,
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        &nbsp; &nbsp; &nbsp;           "isFurnished": <class 'bool'>
+<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        }
+<br />&nbsp;&nbsp;&nbsp;        }
+<br />}
