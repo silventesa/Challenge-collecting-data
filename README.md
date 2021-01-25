@@ -137,8 +137,7 @@ with open('../csv_files/houses_apartments_urls.csv', 'r') as file:
         ...
 ```
 
+
 #### Store data in a csv file
 
 We finally converted our dict into a pandas DataFrame and saved it as a csv.
-
-![FINAL_CSV_PANDAS](/screenshots/store_csv_pandas.png)
