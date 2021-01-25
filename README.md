@@ -2,12 +2,10 @@
 
 ImmoScraping is a Python project using web scraping to create a dataset of Belgian real estate sales data.   
 
-This project was carried out by Emre Ozan](https://github.com/mremreozan), [Joachim Kotek](https://github.com/jotwo) and [Sara Silvente](https://github.com/silventesa) in Sept 2020 in the context of the course Bouman 2.22 organized by [BeCode](https://github.com/becodeorg), a network of inclusive coding bootcamps.
+This project was carried out by [Emre Ozan](https://github.com/mremreozan), [Joachim Kotek](https://github.com/jotwo) and [Sara Silvente](https://github.com/silventesa) in Sept 2020 in the context of the course Bouman 2.22 organized by [BeCode](https://github.com/becodeorg), a network of inclusive coding bootcamps.
 
 
-## Let's go through it!
-
-The [immoweb](https://github.com/mremreozan/immoweb_scraping/blob/master/immoweb.ipynb) jupyter file provides the ways to scrap data from the results of a search in a real estate company website and store it in a csv file.
+## Context
 
 Here we used [immoweb real estate company](https://www.immoweb.be/en) and looked for 10000 houses and appartments for sale across Belgium.
 
@@ -33,6 +31,13 @@ Currently, the program grasps the following information (stored in the dataset):
 - State of the building (New, to be renovated, ...)
 
 
+## Source code
+
+Source code files correspond to each main project step, and are sequentially ordered: 
+1. Get URLs for each property for sale (web automation)
+2. Grasp and select target data
+3. Store data
+
 ### Scraping data from the website
 
 We used Chrome [WebDriver](https://www.selenium.dev/documentation/en/webdriver/) through [Selenium](https://www.selenium.dev/documentation/en/) and [Parsel](https://parsel.readthedocs.io/en/latest/) to get and extract the URL of each result page using XPath selector (the [web_drivers](https://github.com/silventesa/Challenge-collecting-data/tree/master/web_drivers) folder contains also the driver for Firefox).
@@ -56,7 +61,7 @@ for i in range(1, 334):
 
 We next get the url of each house and store it in a csv file. The same procedure was performed for appartments, since different URLs are used for each kind of property.
 
-#### Accessing the information
+### Accessing the information
 
 We got a HTML parsed tree of each property by using [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/#) library.
 
@@ -64,7 +69,7 @@ Data on properties was contained in "windows.classified", under a ''<script>'' t
 
 ![HTML_PROPERTY_WINDOW_CLASSIFIED](/screenshots/window_classified_good.png)
 
-We selected this bunch of text and converted it into a python dictionary, where keys = features of properties and values = values (check features dict layout [here]()
+We selected this bunch of text and converted it into a python dictionary, where keys = features of properties and values = values (check features dict layout [here](https://github.com/silventesa/Challenge-collecting-data/tree/master/dict)
 
 ```python
     def house_dict(self):
@@ -130,6 +135,6 @@ with open('../csv_files/houses_apartments_urls.csv', 'r') as file:
 ```
 
 
-#### Store data in a csv file
+### Store data
 
 We finally converted our dict into a pandas DataFrame and saved it as a csv.
