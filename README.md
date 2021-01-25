@@ -1,16 +1,8 @@
 # ImmoScraping
 
-## What is this?
+ImmoScraping is a Python project using web scraping to create a dataset of Belgian real estate sales data.   
 
-Python program using web scraping to create a dataset of Belgian real estate sales data.   
-
-### Where does it come from?
-
-This project was carried out in Sept 2020 in the context of the course Bouman 2.22 organized by [BeCode](https://github.com/becodeorg), a network of inclusive coding bootcamps.
-
-### Who's there?
-
-Three learners and collaborators, [Emre Ozan](https://github.com/mremreozan), [Joachim Kotek](https://github.com/jotwo) and [Sara Silvente](https://github.com/silventesa), designed the program.
+This project was carried out by Emre Ozan](https://github.com/mremreozan), [Joachim Kotek](https://github.com/jotwo) and [Sara Silvente](https://github.com/silventesa) in Sept 2020 in the context of the course Bouman 2.22 organized by [BeCode](https://github.com/becodeorg), a network of inclusive coding bootcamps.
 
 
 ## Let's go through it!
