@@ -2,7 +2,7 @@
 
 ## What is this?
 
-A python program using web scraping to create a dataset of Belgian real estate sales data.   
+Python program using web scraping to create a dataset of Belgian real estate sales data.   
 
 ### Where does it come from?
 
@@ -43,75 +43,101 @@ Currently, the program grasps the following information (stored in the dataset):
 
 ### Scraping data from the website
 
-The first step is to get the url of each page of results by using **webdriver** and **selector**, from **selenium** and **parsel** libraries. 
-Each page of the search results contains a number of links to houses for sale (here, around 30). For example, our search in immoweb yielded 333 pages of results. Note that you'll need to change the value below by yours. 
+We used Chrome [WebDriver](https://www.selenium.dev/documentation/en/webdriver/) through [Selenium](https://www.selenium.dev/documentation/en/) and [Parsel](https://parsel.readthedocs.io/en/latest/) to get and extract the URL of each result page using XPath selector (the [web_drivers](https://github.com/silventesa/Challenge-collecting-data/tree/master/web_drivers) folder contains also the driver for Firefox).
 
-![FIRST_CELL_ITERATING_RESULTS_PAGESURLS](/screenshots/sc1.png)
+Our search yielded 333 pages of results. Note that you'll need to change the value below by yours. 
 
-We next get the url of each house to a csv file and repeat the same procedure with a search made on appartments, since they have a different url from the one of houses. You can skip this step if you use a website in which all results are contained in the same url. 
+```python
+# 1) Obtain URLs through WebDrive
+
+driver = webdriver.Chrome(executable_path='../web_drivers/chromedriver.exe')
+
+# Each URL will be stored in a list.
+houses_url = []
+
+# Iterate through all result pages and get the url of each of them. 
+# CHANGE 334 VALUE BY YOURS
+for i in range(1, 334):
+    apikey = str(i)+'&orderBy=relevance'
+    url = 'https://www.immoweb.be/en/search/house/for-sale?countries=BE&page='+apikey
+```
+
+We next get the url of each house and store it in a csv file. The same procedure was performed for appartments, since different URLs are used for each kind of property.
 
 #### Accessing the information
 
-We get a the HTML parsed tree of each property by using the python **Beautiful Soup** package.
+We got a HTML parsed tree of each property by using [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/#) library.
 
-As you can see below, propertys' data is stored _in the form of_ a python dictionary, and it _seems_ to be assigned to a variable called "window.classified" under a ``<script>`` tag with the attributes ``type="text/javascript"``. 
+Data on properties was contained in "windows.classified", under a ''<script>'' tag. 
 
 ![HTML_PROPERTY_WINDOW_CLASSIFIED](/screenshots/window_classified_good.png)
 
-We use the string "window.classified" as a reference to select the part we are interested in, and then create a proper python dictionary by which property's attributes are treated as keys and values as values.
+We selected this bunch of text and converted it into a python dictionary, where keys = features of properties and values = values (check features dict layout [here]()
 
-![CREATION_DICTIONAY](/screenshots/dictionary.png)
+```python
+    def house_dict(self):
+        '''
+        Define a method that creates the dictionary with attributes as keys and houses' values as values
+        '''
+        try:
+            # The relevant info is under a "script" tag in the website
+            result_set = self.soup.find_all('script',attrs={"type" :"text/javascript"})
+            
+            # Iterate through the "script" tags found and keep the one containing the substring "window.classified"
+            # which contains all the relevant info
+            for tag in result_set:
+                if 'window.classified' in str(tag.string):
+                    window_classified = tag
+                    #when we've found the right tag we can stop the loop earlier
+            
+            
+            # Access to the string attribute of the tag and remove leading and trailing whitespaces (strip)break
+            wcs = window_classified.string
+            wcs.strip()
+            
+            # Keep only the part of the string that will be converted into a dictionary
+            wcs = wcs[wcs.find("{"):wcs.rfind("}")+1]
+            
+            # Convert it into a dictionary through json library
+            house_dict = json.loads(wcs)
+            return house_dict
+        except:
+            return None
+```
 
-The dictionary as well as the entries for each property attribute are defined created by means of an instance methods in the **class `HouseApartmentScraping`**. 
+We defined `HouseApartmentScraping` class and used class methods to get each property attribute (and store it as a dictionary value) through an iteration performed on the URLs that were previously stored in the csv file.
 
-We iterate through all the urls that have been previously stored in the csv file and we store the values for each property attribute in a ``defaultdict``.
+```python
 
-![COLLECT_DEFAULTDICT](/screenshots/collect_defaultdict.png)
+# Example with number of rooms
 
-#### Store the data in a csv file
+    def num_rooms(self):
+        try:
+            return int(self.house_dict['property']['bedroomCount'])
+        except:
+            return None
+```
 
-Finally, we store our results in a csv file by using **pandas dataframe**, which you can also use to visualize the data. And voilà!
+Store values into a `defaultdict()`
 
-![FINAL_CSV_PANDAS](/screenshots/store_csv_pandas.png)
+```python
+houses_apartments_dict = defaultdict(list)
+
+with open('../csv_files/houses_apartments_urls.csv', 'r') as file:
+    url = file.readline()
+    while url != "":
+        
+        houses_class = HouseApartmentScraping(url)
+        
+        houses_apartments_dict['Locality'].append(houses_class.locality)
+        houses_apartments_dict['Type of property'].append(houses_class.type_property)
+        houses_apartments_dict['Subtype of property'].append(houses_class.subtype)
+        houses_apartments_dict['Price'].append(houses_class.price)
+        
+        ...
+```
 
 
-### Features Dict Layout
+#### Store data in a csv file
 
-house_dict = {
-<br />&nbsp;&nbsp;&nbsp;        "flags":{
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "isPublicSale": <class 'bool'>,
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "isNotarySale": <class 'bool'>,
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "isAnInteractiveSale": <class 'bool'>
-<br />&nbsp;&nbsp;&nbsp;        },
-<br />&nbsp;&nbsp;&nbsp;        "property": {
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "location": {
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        &nbsp; &nbsp; &nbsp;           "postalCode": <class 'str'>,
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        },
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "building": {
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        &nbsp; &nbsp; &nbsp;           "condition": <class 'str'>,
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        &nbsp; &nbsp; &nbsp;           "facadeCount": <class 'int'>
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        },
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "land": {
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        &nbsp; &nbsp; &nbsp;           "surface": <class 'int'>
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        },
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "kitchen": {
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        &nbsp; &nbsp; &nbsp;           "type": <class 'str'>
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        },
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "type": <class 'str'>,
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "subtype": <class 'str'>,
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "netHabitableSurface": <class 'int'>,
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "bedroomCount": <class 'int'>,
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "hasGarden": <class 'bool'>,
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "gardenSurface": <class 'int'>,
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "hasTerrace": <class 'bool'>,
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "terraceSurface": <class 'int'>,
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "fireplaceExists": <class 'bool'>,
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "hasSwimmingPool": <class 'bool'>
-<br />&nbsp;&nbsp;&nbsp;        },
-<br />&nbsp;&nbsp;&nbsp;        "transaction": {
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        "sale": { 
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        &nbsp; &nbsp; &nbsp;           "price": <class 'int'>,
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        &nbsp; &nbsp; &nbsp;           "isFurnished": <class 'bool'>
-<br />&nbsp;&nbsp;&nbsp;        &nbsp; &nbsp; &nbsp;        }
-<br />&nbsp;&nbsp;&nbsp;        }
-<br />}
+We finally converted our dict into a pandas DataFrame and saved it as a csv.
